@@ -269,6 +269,16 @@
             "related": ".xml"
           }
         }
+      },
+      "SimpleWallet.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/SimpleWallet.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SimpleWallet.Domain.dll": {}
+        }
       }
     }
   },
@@ -707,11 +717,17 @@
         "npgsql.entityframeworkcore.postgresql.nuspec",
         "postgresql.png"
       ]
+    },
+    "SimpleWallet.Domain/1.0.0": {
+      "type": "project",
+      "path": "../SimpleWallet.Domain/SimpleWallet.Domain.csproj",
+      "msbuildProject": "../SimpleWallet.Domain/SimpleWallet.Domain.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "Npgsql.EntityFrameworkCore.PostgreSQL >= 8.0.10"
+      "Npgsql.EntityFrameworkCore.PostgreSQL >= 8.0.10",
+      "SimpleWallet.Domain >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -738,7 +754,11 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "/workspaces/SimpleWallet/SimpleWallet.Domain/SimpleWallet.Domain.csproj": {
+              "projectPath": "/workspaces/SimpleWallet/SimpleWallet.Domain/SimpleWallet.Domain.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
