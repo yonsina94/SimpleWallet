@@ -1,7 +1,12 @@
 using AutoMapper;
+using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SimpleWallet.Application.DTOs;
+using SimpleWallet.Application.Features.Wallet.Create;
+using SimpleWallet.Application.Features.Wallet.Delete;
+using SimpleWallet.Application.Features.Wallet.Transfer;
+using SimpleWallet.Application.Features.Wallet.Update;
 using SimpleWallet.Application.Interfaces;
 using SimpleWallet.Domain.Entities;
 using SimpleWallet.Domain.Enums;
@@ -17,12 +22,15 @@ namespace SimpleWallet.Api.Controllers
     {
         protected readonly IWalletService _walletService;
         protected readonly IMapper _mapper;
+        private readonly IMediator _mediator;
 
-        public WalletController(IWalletService walletService, IMapper mapper)
+        public WalletController(IWalletService walletService, IMapper mapper, IMediator mediator)
         {
-            _mapper = mapper;
+            _mediator = mediator;
             _walletService = walletService;
+            _mapper = mapper;
         }
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
@@ -42,66 +50,33 @@ namespace SimpleWallet.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] WalletCreateDto walletDto)
+        public async Task<IActionResult> Create([FromBody] CreateWalletCommand command)
         {
-            if (walletDto == null)
-            {
-                return BadRequest("Wallet data is required.");
-            }
+            var result = await _mediator.Send(command);
 
-            var newWallet = _mapper.Map<Wallet>(walletDto);
-
-            var createdWallet = await _walletService.CreateAsync(newWallet);
-            return CreatedAtAction(nameof(GetById), new { id = createdWallet.Id }, createdWallet);
+            return CreatedAtAction(nameof(GetById), new { id = result.Data.Id }, result.Data);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, [FromBody] WalletUpdateDto walletDto)
+        public async Task<IActionResult> Update(int id, [FromBody] UpdateWalletCommand command)
         {
-            if (walletDto == null || id != null)
-            {
-                return BadRequest("Invalid wallet data.");
-            }
+            var result = await _mediator.Send(command);
 
-            var existingWallet = await _walletService.GetByIdAsync(id);
-            if (existingWallet == null)
-            {
-                return NotFound($"Wallet with ID {id} not found.");
-            }
-
-            var updatedWallet = _mapper.Map<Wallet>(walletDto, opc => opc.Items["Id"] = id);
-            updatedWallet.Id = id; // Ensure the ID is set correctly
-            await _walletService.UpdateAsync(updatedWallet);
-            return NoContent();
+            return Ok(result);
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var existingWallet = await _walletService.GetByIdAsync(id);
-            if (existingWallet == null)
-            {
-                return NotFound($"Wallet with ID {id} not found.");
-            }
-
-            await _walletService.DeleteAsync(existingWallet.Id);
+            var result = await _mediator.Send(new { id });
             return NoContent();
         }
         [HttpPost("transfer")]
-        public async Task<IActionResult> Transfer([FromBody] TransferDto transferDto)
+        public async Task<IActionResult> Transfer([FromBody] TransferWalletCommand command)
         {
-            if (transferDto == null)
-            {
-                return BadRequest("Transfer data is required.");
-            }
+            var result = await _mediator.Send(command);
 
-            var success = await _walletService.TransferFundsAsync(transferDto.FromWalletId, transferDto.ToWalletId, transferDto.Amount);
-            if (!success)
-            {
-                return BadRequest("Transfer failed.");
-            }
-
-            return NoContent();
+            return Ok(result);
         }
         [HttpGet("by-document-type/{documentType}")]
         public async Task<IActionResult> GetByDocumentType(string documentType)

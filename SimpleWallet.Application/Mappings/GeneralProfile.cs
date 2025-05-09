@@ -15,17 +15,6 @@ public class GeneralProfile : Profile
             .ForMember(dest => dest.DocumentType, opt => opt.MapFrom(src => src.DocumentType))
             .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
             .ForMember(dest => dest.Balance, opt => opt.MapFrom(src => src.Balance));
-
-        CreateMap<WalletCreateDto, Wallet>()
-            .ForMember(dest => dest.DocumentId, opt => opt.MapFrom(src => src.DocumentId))
-            .ForMember(dest => dest.DocumentType, opt => opt.MapFrom(src => src.DocumentType))
-            .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
-            .ForMember(dest => dest.Balance, opt => opt.MapFrom(src => src.Balance));
-
-        CreateMap<WalletUpdateDto, Wallet>()
-            .ForMember(dest => dest.DocumentId, opt => opt.MapFrom(src => src.DocumentId))
-            .ForMember(dest => dest.DocumentType, opt => opt.MapFrom(src => src.DocumentType))
-            .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name));
         #endregion
 
         #region Movement

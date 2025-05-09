@@ -1,4 +1,9 @@
+using MediatR;
 using Microsoft.EntityFrameworkCore;
+using SimpleWallet.Application.Features.Wallet.Create;
+using SimpleWallet.Application.Features.Wallet.Delete;
+using SimpleWallet.Application.Features.Wallet.Transfer;
+using SimpleWallet.Application.Features.Wallet.Update;
 using SimpleWallet.Application.Interfaces;
 using SimpleWallet.Application.Mappings;
 using SimpleWallet.Application.Services;
@@ -17,6 +22,9 @@ builder.Services.AddSwaggerGen();
 
 // AutoMapper configuration
 builder.Services.AddAutoMapper(typeof(GeneralProfile).Assembly);
+
+builder.Services.AddMediatR([typeof(CreateWalletCommand).Assembly, typeof(UpdateWalletCommand).Assembly, typeof(DeleteWalletCommand).Assembly, typeof(TransferWalletCommand).Assembly]); // Registra los Handlers en el mismo assembly que CreateWalletCommand
+
 
 // DbContext configuration
 builder.Services.AddDbContext<SimpleWalletDbContext>(options =>

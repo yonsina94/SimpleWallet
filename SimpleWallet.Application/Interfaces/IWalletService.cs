@@ -9,5 +9,5 @@ public interface IWalletService : IBaseService<Wallet, WalletDto>
 {
     Task<WalletDto> GetByDocumentIdAsync(string documentId);
     Task<IEnumerable<WalletDto>> GetByDocumentTypeAsync(DocumentType documentType);
-    Task<bool> TransferFundsAsync(int fromWalletId, int toWalletId, decimal amount);
+    Task TransferFundsAsync(int fromWalletId, int toWalletId, decimal amount);
 }
