@@ -16,6 +16,11 @@ public class WalletConfiguration : IEntityTypeConfiguration<Wallet>
             .HasColumnName("DocumentId")
             .HasMaxLength(100);
 
+        builder.Property(w => w.DocumentType)
+            .IsRequired()
+            .HasColumnName("DocumentType")
+            .HasConversion<string>();
+
         builder.Property(w => w.Name)
             .IsRequired()
             .HasColumnName("Name")
@@ -25,9 +30,5 @@ public class WalletConfiguration : IEntityTypeConfiguration<Wallet>
             .IsRequired()
             .HasColumnName("Balance")
             .HasPrecision(18, 2);
-
-        builder.HasMany(w => w.Movements)
-            .WithOne(m => m.Wallet)
-            .HasForeignKey(m => m.WalletId);
     }
 }

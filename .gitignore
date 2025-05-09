@@ -1,0 +1,192 @@
+# Archivos generados por el IDE
+.vs/
+*.suo
+*.user
+*.sln.docstates
+*.testsettings
+*.runsettings
+*.dbmdl
+*.jfm
+
+# Builds
+**/bin/*
+**/obj/*
+**/publish/*
+_PublishedWebsites/
+
+# Paquetes NuGet
+packages/
+*.nupkg
+*.snupkg
+
+# Resultados de pruebas
+TestResults/
+*.trx
+*.coverage
+*.opencover.xml
+CoverletOutput/
+
+# Documentación generada
+**/Documentation/*
+**/_site/*
+
+# Archivos de caché y temporales del sistema operativo
+Thumbs.db
+.DS_Store
+
+# Archivos específicos del usuario
+*.csproj.user
+*.vbproj.user
+*.fsproj.user
+*.vcxproj.user
+*.vcxproj.filters.user
+*.props
+Directory.Packages.props
+Directory.Build.props
+Directory.Build.targets
+
+# Archivos de herramientas específicas
+resharper.dotsettings*
+*.DotSettings.user
+_ReSharper.*/
+
+# Archivos de contenedores Docker
+**/docker-compose*.yml
+**/Dockerfile*
+
+# Archivos de configuración local
+appsettings.Development.json
+usersecrets.json
+
+# Otros archivos generados o temporales
+*.log
+*.patch
+*.orig
+*.bak
+*.swp
+*.vspscc
+*.vssscc
+*.pid
+*.saproj
+*.csproj.FileListAbsolute.txt
+*.vbproj.FileListAbsolute.txt
+*.fsproj.FileListAbsolute.txt
+*.dbproj.schemaview
+*.sqlproj.schemaview
+*.shproj.user
+*.dwproj.user
+*.dproj.local
+*.cdproj.user
+*.dcproj.user
+*.dtproj.user
+*.modelproj.user
+*.wixproj.user
+*.vcxproj.VC.db
+*.vcxproj.opensdf
+*.unsuccessfulbuild
+*.VC.opendb
+*.tlog
+*.tlh
+*.tli
+*.vsmdi
+*.vstemplate
+*.vsixmanifest
+*.vsixlangpack
+*.vsdpscc
+*.vssmsscc
+*.tsscc
+*.psess
+*.vsp
+*.psess.diag
+*.sap
+*.codemap
+*.dgml
+*.sqm
+*.dia
+*.cachefile
+*.itb
+*.iobj
+*.resources
+*.resw
+*.pri
+*.rdb
+*.uc
+*.aii
+*.objdata
+*.tlproj
+*.msi
+*.msp
+*.cab
+*.setup
+*.chm
+*.exe.config
+*.dll.config
+*.manifest
+*.application
+*.appref-ms
+*.deploy
+*.pfx
+*.cer
+*.p12
+*.cscfg
+*.csdef
+*.azurePubxml
+*.nuspec
+
+# Carpeta de publicación de ClickOnce
+**/Application Files/*
+
+# Archivos de JetBrains Rider
+.idea/
+*.iml
+
+# Archivos de VS Code
+.vscode/
+*.code-workspace
+
+# Archivos de Unity (si aplica)
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Aa]sset[Ss]ets*/
+/[Pp]rojectSettings/ProjectSettings.asset
+/[Pp]rojectSettings/ProjectVersion.txt
+*.pidb
+*.meta
+*.sln.docstates
+*.so
+*.dll
+*.pdb
+*.apk
+*.unitypackage
+*.orig
+*.csproj.user
+*.unityproj
+*.booproj
+*.svd
+*.userprefs
+
+# Archivos de Xamarin (si aplica)
+**/Android/obj/*
+**/Android/bin/*
+**/iOS/obj/*
+**/iOS/bin/*
+**/UWP/obj/*
+**/UWP/bin/*
+**/Xamarin.Forms/obj/*
+**/Xamarin.Forms/bin/*
+*.xaml.g.cs
+*.xaml.g.vb
+*.xaml.g.fs
+
+# Archivos de Blazor (si aplica)
+**/Client/bin/*
+**/Client/obj/*
+**/Server/bin/*
+**/Server/obj/*
+**/Wasm/bin/*
+**/Wasm/obj/*
+**/dist/*
+**/wwwroot/_content/*

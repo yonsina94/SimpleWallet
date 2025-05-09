@@ -5,8 +5,8 @@ namespace SimpleWallet.Domain.Enums
     public enum MovementType
     {
         [Display(Name = "debit")]
-        Debit,
+        Debit = 1,
         [Display(Name = "credit")]
-        Credit
+        Credit = 2
     }
 }

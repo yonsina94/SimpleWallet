@@ -12,39 +12,38 @@ using SimpleWallet.Infraestructure.Repositories.Interfaces.Base;
 public class BaseRepository<TEntity>(SimpleWalletDbContext context) : IBaseRepository<TEntity> where TEntity : BaseEntity
 {
     protected readonly SimpleWalletDbContext _context = context;
-    protected readonly DbSet<TEntity> _dbSet = context.Set<TEntity>();
 
     public Task<TEntity> AddAsync(TEntity entity)
     {
-        _dbSet.Add(entity);
+        _context.Set<TEntity>().Add(entity);
         return Task.FromResult(entity);
     }
 
     public Task DeleteAsync(TEntity entity)
     {
-        _dbSet.Remove(entity);
+        _context.Set<TEntity>().Remove(entity);
         return Task.CompletedTask;
     }
 
     public Task<IQueryable<TEntity>> GetAllAsync()
     {
-        return Task.FromResult(_dbSet.AsQueryable());
+        return Task.FromResult(_context.Set<TEntity>().AsQueryable());
     }
 
     public Task<IQueryable<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>> where)
     {
-        return Task.FromResult(_dbSet.Where(where).AsQueryable());
+        return Task.FromResult(_context.Set<TEntity>().Where(where).AsQueryable());
     }
 
     public async Task<TEntity?> GetByIdAsync(int id)
     {
-        var entity = await _dbSet.FindAsync(id);
+        var entity = await _context.Set<TEntity>().FindAsync(id);
         return entity;
     }
 
     public Task<TEntity> UpdateAsync(TEntity entity)
     {
-        _dbSet.Update(entity);
+        _context.Set<TEntity>().Update(entity);
         return Task.FromResult(entity);
     }
 

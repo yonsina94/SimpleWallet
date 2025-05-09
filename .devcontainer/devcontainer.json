@@ -24,14 +24,19 @@
   "portsAttributes": {
     "5001": {
       "protocol": "https"
-    }
+    },
+    "5000": {
+      "protocol": "http"
+    },
   },
   "customizations": {
     "vscode": {
       "extensions": [
         "ms-dotnettools.csdevkit",
         "ms-dotnettools.vscodeintellicode-csharp",
-        "ms-dotnettools.csharp"
+        "ms-dotnettools.csharp",
+        "cweijan.vscode-database-client2",
+        "cweijan.dbclient-jdbc"
       ]
     }
   }

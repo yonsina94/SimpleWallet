@@ -28,9 +28,5 @@ public class MovementConfiguration : IEntityTypeConfiguration<Movement>
             .IsRequired()
             .HasColumnName("Type")
             .HasConversion<string>();
-
-        builder.HasOne(m => m.Wallet)
-            .WithMany(w => w.Movements)
-            .HasForeignKey(m => m.WalletId);
     }
 }
